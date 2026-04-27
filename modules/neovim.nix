@@ -1,14 +1,23 @@
-{ pkgs, ... }: {
+{ config, pkgs, inputs, ... }: {
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
 
-    plugins = with pkgs.vimPlugins; {
-      nvim-lspconfig
-      lualine-nvim
-      telescope-nvim
-      conform-nvim
-      nvim-treesitter.withAllGrammars # installs all major and minor languages
-      
-           
+    extraPackages = with pkgs; [
+      lua-language-server
+
+      tree-sitter
+      gcc # apparently tree-sitter needs gcc
+
+
+      # Nix
+      alejandra # formatter
+      nixd # lsp
+
+      wl-clipboard
+    ];
+
+    plugins = with pkgs.vimPlugins; [ lazy-nvim ];
+    initLua = ''require("config")'';
   };
 }
