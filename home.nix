@@ -7,7 +7,6 @@
     ./modules/neovim.nix
     ./modules/git.nix
     ./modules/yazi.nix
-    ./modules/vicinae.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
