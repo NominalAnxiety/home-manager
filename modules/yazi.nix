@@ -5,13 +5,19 @@
     enable = true;
 
 
-    plugins = {
-      full-border = pkgs.yaziPlugins.full-border;
+    plugins = with pkgs; {
+      full-border = yaziPlugins.full-border;
+      relative-motions = yaziPlugins.relative-motions;
     };
 
     initLua = ''
 	    require("full-border"):setup()
 	    '';
+
+    theme = {
+      indicator.padding = { open = "▐"; close = "▌"; };
+    };
+
   };
 
   catppuccin.yazi = {
