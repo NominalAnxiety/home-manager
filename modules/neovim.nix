@@ -19,5 +19,8 @@
 
     plugins = with pkgs.vimPlugins; [ lazy-nvim ];
     initLua = ''require("config")'';
+
+    withRuby = false;
+    withPython3 = false;
   };
 }
