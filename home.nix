@@ -7,7 +7,6 @@
     ./modules/neovim.nix
     ./modules/git.nix
     ./modules/yazi.nix
-    ./modules/zen_browser.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -26,10 +25,12 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    discord
     slack
   ];
 
+  programs.vesktop = {
+    enable = true;
+  };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -61,21 +62,11 @@
   #
   #  /etc/profiles/per-user/austinb/etc/profile.d/hm-session-vars.sh
   #
-  xdg.enable = true;
-
-  xdg.desktopEntries.discord = {
-    name = "Discord";
-    exec = "discord --ozone-platform=wayland --force-device-scale-factor=1.7 %U"; # hardcoded kde scale factor
-    icon = "discord";
-    terminal = false;
-    categories = [ "Network" "InstantMessaging" ];
-    mimeType = [ "x-scheme-handler/discord" ];
-  };
 
   home.sessionVariables = {
     EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
-  # programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 }
