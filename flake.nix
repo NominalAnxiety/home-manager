@@ -29,27 +29,22 @@
         config.allowUnfree = true;
       };
       macSystem = "aarch64-darwin";
-      macPkgs = import nixpkgs {
-        system = macSystem;
-        config.allowUnfree = true;
-      };
     in
     {
 
       homeConfigurations.PC = home-manager.lib.homeManagerConfiguration {
-        inherit linuxPkgs;
+	    pkgs = linuxPkgs;
         extraSpecialArgs = {
-	  inherit inputs;
-	  username = "austinb";
-	  homeDirectory = "/home/austinb";
-	};
+          inherit inputs;
+          username = "austinb";
+          homeDirectory = "/home/austinb";
+        };
         modules = [
           ./home.nix
           catppuccin.homeModules.catppuccin
         ];
       };
       darwinConfigurations.mactop = nix-darwin.lib.darwinSystem {
-	    inherit macPkgs;
         system = macSystem;
         specialArgs = { inherit inputs; };
         modules = [
@@ -59,11 +54,11 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-	      extraSpecialArgs = {
-		inherit inputs;
-		username = "austinbowman";
-		homeDirectory = "/Users/austinbowman";
-	      };
+              extraSpecialArgs = {
+                inherit inputs;
+                username = "austinbowman";
+                homeDirectory = "/Users/austinbowman";
+              };
               users.austinbowman = {
                 imports = [
                   ./hosts/mac/home.nix
