@@ -2,6 +2,7 @@
 {
   system.stateVersion = 5;
   nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.config.allowUnfree = true;
 
   users.users.austinbowman = {  # replace this with your actual username (find using whoami)
     name = "austinbowman"; # replace this with your actual username (find using whoami)
@@ -9,7 +10,7 @@
   };
 
   nix.settings.experimental-features = [
-    "nix-flakes"
+    "flakes"
     "nix-command"
   ];
 }
