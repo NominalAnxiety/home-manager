@@ -27,9 +27,8 @@
       ripgrep
       fd
 
-      # Clipboard
-      wl-clipboard
-    ];
+    ] ++ lib.optionals stdenv.isLinux [ wl-clipboard ]; # adds wl-clipboard if on linux
+
     plugins = with pkgs.vimPlugins; [ lazy-nvim ];
     initLua = ''require("config")'';
     withRuby = false;
