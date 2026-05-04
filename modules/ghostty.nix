@@ -1,7 +1,7 @@
 { catppuccin, pkgs, lib, ... }: {
-  catppuccin.enable = lib.mkIf pkgs.stdenv.isLinux true;
+  catppuccin.enable = true;
 
-  programs.ghostty = lib.mkIf pkgs.stdenv.isLinux {
+  programs.ghostty = {
     enable = true;
     settings = {
       theme = "catppuccin-mocha";

@@ -1,11 +1,8 @@
 { config, pkgs, username, homeDirectory, ... }:
 
-# TODO should have a shared home.nix between all my systems and then an individual home.nix for all my systems
-
 {
   imports = [
     ./modules/zsh.nix
-    ./modules/ghostty.nix
     ./modules/neovim.nix
     ./modules/git.nix
     ./modules/yazi.nix
@@ -26,7 +23,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    slack
 	maple-mono.NF
   ];
 

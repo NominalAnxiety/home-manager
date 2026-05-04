@@ -25,7 +25,6 @@
     let
       linuxSystem = "x86_64-linux";
       linuxPkgs = import nixpkgs {
-        # renamed from pkgs
         system = linuxSystem;
         config.allowUnfree = true;
       };
@@ -50,7 +49,7 @@
         ];
       };
       darwinConfigurations.mactop = nix-darwin.lib.darwinSystem {
-	    # inherit macPkgs;
+	    inherit macPkgs;
         system = macSystem;
         specialArgs = { inherit inputs; };
         modules = [
@@ -67,7 +66,7 @@
 	      };
               users.austinbowman = {
                 imports = [
-                  ./home.nix
+                  ./hosts/mac/home.nix
                   catppuccin.homeModules.catppuccin
                 ];
               };
