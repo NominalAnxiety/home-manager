@@ -12,5 +12,4 @@
     "nix-flakes"
     "nix-command"
   ];
-  services.nix-daemon.enable = true;
 }

@@ -1,18 +1,14 @@
-{ catppuccin, pkgs, ... }: {
-  
-  # Enable catppuccin (shouldn't be here probably)
-  catppuccin.enable = true; 
+{ catppuccin, pkgs, lib, ... }: {
+  catppuccin.enable = lib.mkIf pkgs.stdenv.isLinux true;
 
-  # Enable ghostty
-  programs.ghostty = {
+  programs.ghostty = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     settings = {
       theme = "catppuccin-mocha";
       background-opacity = 0.80;
       background-blur = 20;
-	  font-family = "Maple Mono NF";
-	  font-size = 12;
+      font-family = "Maple Mono NF";
+      font-size = 12;
     };
   };
-
 }

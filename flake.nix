@@ -39,7 +39,11 @@
 
       homeConfigurations.PC = home-manager.lib.homeManagerConfiguration {
         inherit linuxPkgs;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {
+	  inherit inputs;
+	  username = "austinb";
+	  homeDirectory = "/home/austinb";
+	};
         modules = [
           ./home.nix
           catppuccin.homeModules.catppuccin
@@ -56,8 +60,12 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit inputs; };
-              users.austin = {
+	      extraSpecialArgs = {
+		inherit inputs;
+		username = "austinbowman";
+		homeDirectory = "/Users/austinbowman";
+	      };
+              users.austinbowman = {
                 imports = [
                   ./home.nix
                   catppuccin.homeModules.catppuccin
