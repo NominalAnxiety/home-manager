@@ -8,33 +8,63 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { 
-    nixpkgs,
-    catppuccin,
-    home-manager,
-    ... 
-  }@inputs:
-  let 
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
+  outputs =
+    {
+      nixpkgs,
+      catppuccin,
+      home-manager,
+      nix-darwin,
+      ...
+    }@inputs:
+    let
+      linuxSystem = "x86_64-linux";
+      linuxPkgs = import nixpkgs {
+        # renamed from pkgs
+        system = linuxSystem;
+        config.allowUnfree = true;
+      };
+      macSystem = "aarch64-darwin";
+      macPkgs = import nixpkgs {
+        system = macSystem;
+        config.allowUnfree = true;
+      };
+    in
+    {
+
+      homeConfigurations.PC = home-manager.lib.homeManagerConfiguration {
+        inherit linuxPkgs;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./home.nix
+          catppuccin.homeModules.catppuccin
+        ];
+      };
+      darwinConfigurations.mactop = nix-darwin.lib.darwinSystem {
+        system = macSystem;
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/mac/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = { inherit inputs; };
+              users.austin = {
+                imports = [
+                  ./home.nix
+                  catppuccin.homeModules.catppuccin
+                ];
+              };
+            };
+          }
+        ];
       };
     };
-  in {
-
-    # Available through 'home-manager --flake .#your-hostname
-    homeConfigurations.PC = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = {inherit inputs;};
-      modules = [ 
-        ./home.nix
-	catppuccin.homeModules.catppuccin
-      ];
-    };
-
-  };
 }
