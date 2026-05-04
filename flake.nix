@@ -46,6 +46,7 @@
         ];
       };
       darwinConfigurations.mactop = nix-darwin.lib.darwinSystem {
+	    # inherit macPkgs;
         system = macSystem;
         specialArgs = { inherit inputs; };
         modules = [
