@@ -41,6 +41,7 @@
         };
         modules = [
           ./home.nix
+		  ./hosts/linux/home.nix
           catppuccin.homeModules.catppuccin
         ];
       };
@@ -54,6 +55,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+			  backupFileExtension = "bak";
               extraSpecialArgs = {
                 inherit inputs;
                 username = "austinbowman";
@@ -61,7 +63,8 @@
               };
               users.austinbowman = {
                 imports = [
-                  ./hosts/mac/home.nix
+				  ./home.nix
+				  ./hosts/mac/home.nix
                   catppuccin.homeModules.catppuccin
                 ];
               };
