@@ -1,6 +1,15 @@
 { config, pkgs, ... }: {
+
+  programs.zoxide = {
+    enable = true;
+	enableZshIntegration = true;
+  };
+
+  programs.eza = {
+    enable = true;
+	enableZshIntegration = true;
+  };
   
-  programs.zsh.dotDir = "${config.xdg.configHome}/zsh";
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -8,8 +17,11 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      ll = "ls -l";
-      update = "sudo nixos-rebuild switch";
+      ll = "eza -l";
+	  cd = "z";
+	  ls = "eza";
+      update = "sudo nixos-rebuild switch --flake ~/nixos-config#PC";
+	  update-mac = "sudo darwin-rebuild switch --flake ~/.config/home-manager/#mactop %% cd -";
     };
     history.size = 10000;
     # maybe have more customization later

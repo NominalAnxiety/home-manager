@@ -28,6 +28,7 @@
 	maple-mono.NF
 	gnumake
 	gcc
+	eza
   ];
 
   programs.vesktop = {
