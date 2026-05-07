@@ -21,7 +21,7 @@
 	  cd = "z";
 	  ls = "eza";
       update = "sudo nixos-rebuild switch --flake ~/nixos-config#PC";
-	  update-mac = "sudo darwin-rebuild switch --flake ~/.config/home-manager/#mactop %% cd -";
+	  update-mac = "sudo darwin-rebuild switch --flake ~/.config/home-manager/#mactop";
     };
     history.size = 10000;
     # maybe have more customization later

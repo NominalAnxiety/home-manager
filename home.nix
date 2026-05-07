@@ -29,6 +29,7 @@
 	gnumake
 	gcc
 	eza
+	ripgrep
   ];
 
   programs.vesktop = {
