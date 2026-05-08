@@ -17,7 +17,7 @@
 	  isort
       black
       clang-tools  # clang-format (same package as clangd)
-      nixfmt-rfc-style  # or nixfmt depending on your nixpkgs version
+      nixfmt  # or nixfmt depending on your nixpkgs version
       prettier
 
 	  # Linters
