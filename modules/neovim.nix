@@ -6,7 +6,7 @@
       # LSPs
       lua-language-server
       rust-analyzer
-      pyright
+	  ruff
       clang-tools  # clangd
       nixd
       marksman
