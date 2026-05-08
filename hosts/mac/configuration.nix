@@ -20,8 +20,8 @@
   system.primaryUser = "austinbowman";
   system.defaults = {
     NSGlobalDomain = {
-      KeyRepeat = 1;
-      InitialKeyRepeat = 10;
+      KeyRepeat = 2;
+      InitialKeyRepeat = 20;
       ApplePressAndHoldEnabled = false;
     };
     dock = { # MacOS dock configuration
