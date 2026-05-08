@@ -15,4 +15,16 @@
     "flakes"
     "nix-command"
   ];
+
+  # MacOS system settings
+  system.defaults = {
+    NSGlobalDomain = {
+      KeyRepeat = 2;
+      InitialKeyRepeat = 15;
+    };
+    dock = { # MacOS dock configuration
+      autohide = true;
+	};
+  };
+
 }

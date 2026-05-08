@@ -30,6 +30,7 @@
 	gcc
 	eza
 	ripgrep
+	fd
   ];
 
   programs.vesktop = {

@@ -14,10 +14,14 @@
       # Formatters
       stylua
       rustfmt
+	  isort
       black
       clang-tools  # clang-format (same package as clangd)
       nixfmt-rfc-style  # or nixfmt depending on your nixpkgs version
       prettier
+
+	  # Linters
+
 
       # Treesitter
       tree-sitter
