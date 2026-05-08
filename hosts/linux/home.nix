@@ -1,5 +1,5 @@
 
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   imports = [
@@ -9,5 +9,6 @@
   home.packages = with pkgs; [
     slack
   ];
+  programs.zsh.dotDir = "/home/${username}/.config/zsh";
 
 }
