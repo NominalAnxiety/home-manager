@@ -6,7 +6,8 @@
 
   nix.enable = false;
 
-  users.users.austinbowman = {  # replace this with your actual username (find using whoami)
+  users.users.austinbowman = {
+    # replace this with your actual username (find using whoami)
     name = "austinbowman"; # replace this with your actual username (find using whoami)
     home = "/Users/austinbowman"; # replace this with your actual username (find using whoami)
   };
@@ -24,9 +25,19 @@
       InitialKeyRepeat = 20;
       ApplePressAndHoldEnabled = false;
     };
-    dock = { # MacOS dock configuration
+    dock = {
+      # MacOS dock configuration
       autohide = true;
-	};
+    };
   };
+
+  system.activationScripts.ensureHomebrew.text = ''
+    	  if [ ! -x /opt/homebrew/bin/brew ] && [ ! -x /usr/local/bin/brew ]; then
+    		echo "Homebrew not found. Installing..."
+
+    		NONINTERACTIVE=1 /bin/bash -c \
+    		  "$(${pkgs.curl}/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    	  fi
+    	'';
 
 }
