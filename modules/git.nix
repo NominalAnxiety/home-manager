@@ -14,4 +14,7 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  # enable ssh agent
+  services.ssh-agent.enable = true;
 }
