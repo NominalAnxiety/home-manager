@@ -21,8 +21,8 @@
       ll = "eza -l";
       cd = "z";
       ls = "eza";
-      update = "sudo nixos-rebuild switch --flake ~/nixos-config#PC";
-      update-mac = "sudo darwin-rebuild switch --flake ~/.config/home-manager/#mactop";
+      nixos-update = "sudo nixos-rebuild switch --flake ~/nixos-config#PC";
+      darwin-update = "sudo darwin-rebuild switch --flake ~/.config/home-manager/#mactop";
       home-update = "home-manager switch --flake ~/.config/home-manager#PC";
     };
     history.size = 10000;
